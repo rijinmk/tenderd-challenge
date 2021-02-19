@@ -1,24 +1,33 @@
 import React, { Component } from 'react';
 import { app, auth } from './firebase/config'; 
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'; 
 
-// Main file thats created by gulp after compiling everything
+// Main CSS file thats created by gulp after compiling everything
 import './bundle.min.css'
 
 // User-Defined Components / Contexts
-import AuthProvider from './firebase/AuthContext'; 
+import AuthProvider from './firebase/AuthContext';
+import AuthenticatedRoute from './firebase/AuthenticatedRoute' 
+import UnauthenticatedRoute from './firebase/UnauthenticatedRoute' 
 
 // Pages
 import SignIn from './Pages/SignIn';
 import SignUp from './Pages/SignUp';
+import Profile from './Pages/Profile'; 
 
 class App extends Component {
   render() {
     return (
       <div className="App container">
-        <AuthProvider>
-          <SignIn></SignIn>
-          <SignUp></SignUp>
-        </AuthProvider>
+        <Router>
+          <AuthProvider>
+            <Switch>
+              <UnauthenticatedRoute path="/signup" component={SignUp}></UnauthenticatedRoute>
+              <UnauthenticatedRoute path="/signin" component={SignIn}></UnauthenticatedRoute>
+              <AuthenticatedRoute path="/profile" component={Profile}></AuthenticatedRoute>
+            </Switch>
+          </AuthProvider>
+        </Router>
       </div>
     );
   }

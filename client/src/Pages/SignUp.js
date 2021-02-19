@@ -15,6 +15,7 @@ const signUp = () => {
     const { signup } = useAuth(); 
 
     const [error, setError] = useState(0); 
+    const history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -23,6 +24,7 @@ const signUp = () => {
             await signup(emailRef.current.value, passwordRef.current.value); 
             console.log("User has LOGGEDIN"); 
             console.log("User has SIGNUP"); 
+            history.push("/profile");
         } catch(error) {
             console.log(error);
             setError(error); 

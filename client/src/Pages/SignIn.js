@@ -21,6 +21,7 @@ const signIn = () => {
         try{
             setError('');
             await signin(emailRef.current.value, passwordRef.current.value); 
+            history.push("/profile");
             console.log("User has LOGGEDIN"); 
         } catch(error) {
             console.log(error);

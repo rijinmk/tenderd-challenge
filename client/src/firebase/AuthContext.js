@@ -20,7 +20,7 @@ const AuthProvider = ({ children }) => {
         return firebase.auth().signInWithEmailAndPassword(email, password);
     }
 
-    function logout(email, password){
+    function logout(){
         return firebase.auth().signOut();
     }
 
