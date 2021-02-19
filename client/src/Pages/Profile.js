@@ -1,12 +1,14 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useAuth } from '../firebase/AuthContext'; 
 import { Link, useHistory } from 'react-router-dom'; 
 
 const profile = () => {
 
+    const baseAPI_URL = "http://localhost:5000"; // Added this cause proxy on package.json is not working
     const { currentUser, logout } = useAuth(); 
     const history = useHistory(); 
 
+    
 
     const handleLogout = async () => {
         try{
@@ -16,6 +18,14 @@ const profile = () => {
             console.log(error); 
         }
     }
+
+    useEffect(() => {
+        fetch(`${baseAPI_URL}/api/company/all`)
+            .then(data => data.json())
+            .then((data) => {
+                console.log(data); 
+            }); 
+    }, []); 
 
     return(
         <div>
