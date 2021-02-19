@@ -1,10 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useAuth } from '../firebase/AuthContext'; 
 import { Link, useHistory } from 'react-router-dom'; 
+import { TweenLite } from "gsap";
 
-// Components
-import InputType from "./Components/InputType/InputType"; 
-import Button from "./Components/Button/Button"; 
+// User Build Components
+import ErrorBox from './Components/ErrorBox/ErrorBox'; 
 
 const signIn = () => {
     const emailRef = useRef(); 
@@ -22,23 +22,31 @@ const signIn = () => {
             setError('');
             await signin(emailRef.current.value, passwordRef.current.value); 
             history.push("/profile");
-            console.log("User has LOGGEDIN"); 
         } catch(error) {
-            console.log(error);
-            setError(error); 
+            setError(error.message); 
         }
     }
 
+    useEffect(() => {
+        TweenLite.staggerTo('.signin-signup label span', 0.4, {top: "0px"}, 0.2); 
+    }, []); 
+
     return(
-        <div>
+        <div className="signin-signup">
             <h2>Sign In</h2>
             <hr/>
+            {error ? <ErrorBox message={error} /> : ''}
             <form onSubmit={handleSubmit} className="form-container">
-                <input type="email" ref={emailRef} placeholder="email"/>
-                <input type="password" ref={passwordRef} placeholder="password"/>
-                <input type="submit" value="sign in"/>
+                <label> <span>Email</span> </label>
+                <input type="email" ref={emailRef}/>
+                <label> <span>Password</span> </label>
+                <input type="password" ref={passwordRef}/>
+                <input type="submit" value="Sign In"/>
             </form>
-            {/* <Link to="/signup">Sign Up</Link> */}
+
+            <div className="form-link">
+                Dont have an account? <Link to="/signup">Sign Up</Link>
+            </div>
         </div>
     );
 }

@@ -1,0 +1,65 @@
+@import './vars.scss';
+
+.signin-signup{
+    // border:1px solid red;
+
+    width:350px;
+    height:auto;
+    padding:30px;
+    
+    > h2{
+        // border:1px solid red;
+    }
+
+    > .form-link{
+        text-align: center;
+        width:100%;
+        text-align: center;
+        // display: block;
+        margin-top:20px;
+        font-size:13px;
+        > a{
+            color:$tenderd-dark-yellow;
+            font-weight:700;
+        }
+    }
+
+    > form{
+        // border:1px solid red;
+        display: flex;
+        flex-direction: column;
+
+        > label{
+            // border:1px solid red;
+            overflow:hidden;
+
+            > span{
+                position: relative; 
+                top:30px;
+            }
+        }
+
+        > input{
+            &[type="text"],
+            &[type="email"],
+            &[type="password"]{
+                margin-bottom:20px;
+                border:none;
+                border:1px solid #ccc;
+                padding:5px;
+                border-radius:4px;
+            }
+
+            &[type=submit]{
+                margin-top:20px;
+                padding:10px 0px;
+                border:none;
+                font-weight:700;
+                border-radius:4px;
+                background:$tenderd-primary;
+                color:$tenderd-blue;
+            }
+        }
+
+    }
+}

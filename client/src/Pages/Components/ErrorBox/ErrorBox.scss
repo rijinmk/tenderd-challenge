@@ -1,0 +1,19 @@
+.component-error-box{
+    padding:10px;
+    margin-bottom:10px;
+    border-radius:4px;
+    background:#e74c3c;
+    color:#fff;
+    font-weight:400;
+    font-size:12px;
+
+    // GSAP
+    overflow:hidden;
+    width:0px;
+    height:0px;
+
+    > span{
+        position: relative;
+        top:100px;
+    }
+}
