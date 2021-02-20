@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 // Partial Pages
 import SelectCompany from './SelectCompany'; 
+import RequestList from './RequestsList'; 
 
 const profile = () => {
 
@@ -47,7 +48,7 @@ const profile = () => {
             
             {userHasCompany ? 
                 
-                <h1>REQUESTS AREA</h1> 
+                <RequestList></RequestList>
                 
                 :  
                 
