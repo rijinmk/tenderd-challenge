@@ -7,12 +7,12 @@ Right after cloning
 Open terminal #1: 
 
 ```
-    cd server && nodemon index.js
+    cd server && npm i && nodemon index.js
 ```
 
 On terminal #2
 
 ```
-    cd client && npm start
+    cd client && npm i && npm start
 ```
 
