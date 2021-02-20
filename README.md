@@ -16,3 +16,4 @@ On terminal #2
     cd client && npm i && npm start
 ```
 
+And open [localhost](http://localhost:3000/signin)
