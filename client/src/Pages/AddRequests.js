@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../firebase/AuthContext';
 import IconCard from './Components/IconCard/IconCard'; 
+import { Link, useHistory } from 'react-router-dom'; 
 
 const addRequests = () => {
 
@@ -8,16 +9,35 @@ const addRequests = () => {
     const [companyList, setCompanyList] = useState([]);
     const { currentUser, logout } = useAuth(); 
     const [usersInTheCompany, setusersInTheCompany] = useState(); 
+    const history = useHistory(); 
 
-    const sendData = async () => {
-        let type = document.querySelector("input[name='type-of-request']:checked").value;
-        let status = document.querySelector("input[name='status-of-request']:checked").value;
-        let assignedTo = document.querySelector("input[name='assigned-to-user']:checked").value;
-        let company = document.querySelector("input[name='company']:checked").value;
-        let description = document.querySelector(".desc-container textarea").value; 
+    const sendData = async (e) => {
+
+        e.target.style.opacity = 0.3; 
+        e.target.style.cursor = "not-allowed"; 
+        e.target.setAttribute('disabled', 'true'); 
+
+        let type = document.querySelector("input[name='type-of-request']:checked");
+        let status = document.querySelector("input[name='status-of-request']:checked");
+        let assignedTo = document.querySelector("input[name='assigned-to-user']:checked");
+        let company = document.querySelector("input[name='company']:checked");
+        let description = document.querySelector(".desc-container textarea"); 
         let assignedBy = currentUser.email;
-        console.log("Sending request"); 
-        await fetch(`${baseAPI_URL}/api/request/add?type=${type}&status=${status}&assignedTo=${assignedTo}&company=${company}&description=${description}&assignedBy=${assignedBy}`)
+        console.log(type, status, assignedTo, company, description, assignedBy); 
+        if(type && status && assignedTo && company && description && assignedBy){
+            console.log("Sending request"); 
+            await fetch(`${baseAPI_URL}/api/request/add?type=${type.value}&status=${status.value}&assignedTo=${assignedTo.value}&company=${company.value}&description=${description.value}&assignedBy=${assignedBy.value}`)
+            alert("Request send"); 
+            setTimeout(() => {
+                history.push("/profile"); 
+            }, 500); 
+        }else{
+            e.target.style.opacity = 1; 
+            e.target.style.cursor = "pointer"; 
+            e.target.removeAttribute('disabled'); 
+            alert("Please fill in all the fields"); 
+        }
+
     }
     
     useEffect( async () => {
@@ -92,14 +112,14 @@ const addRequests = () => {
                 {companyList && companyList}
             </div>
 
-            <h4 className="mt-5 mb-3">Users</h4>
-            <div className="form-section icon-container">
+            <h4 className="mt-5 mb-3">{usersInTheCompany ? "Users" : ""}</h4>
+            <div className="form-section icon-container mb-5">
                 {usersInTheCompany && usersInTheCompany}
             </div>
 
             <hr/>
 
-            <div className="form-section icon-container">
+            <div className="form-section btn-container">
                 <input onClick={sendData} type="button" value="Submit"/>
             </div>
 
