@@ -45,6 +45,21 @@ const setCompany = async (req, res, next) => {
     }   
 }
 
+// Get all users data
+const getAllUsers = async (req, res, next) => {
+    try{
+        let data =  await firestore.collection('users').get();
+        let userData = []; 
+        data.forEach(data => {
+            userData.push(data.data()); 
+        });  
+        res.send(userData);
+    } catch(error) {
+        res.status(400).json(error); 
+        console.log("Error", error);
+    }
+}
+
 // Get one user data
 const getOneUserData = async (req, res, next) => {
     try{
@@ -68,5 +83,6 @@ module.exports = {
     addUser, 
     hasCompany, 
     setCompany, 
-    getOneUserData
+    getOneUserData, 
+    getAllUsers
 }

@@ -1,0 +1,15 @@
+.form-section{
+    &.icon-container{
+        display: flex;
+        // justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    textarea{
+        width:100%;
+        border:1px solid #eee;
+        padding:10px;
+    }
+}
+

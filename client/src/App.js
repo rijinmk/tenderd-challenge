@@ -14,6 +14,7 @@ import UnauthenticatedRoute from './firebase/UnauthenticatedRoute'
 import SignIn from './Pages/SignIn';
 import SignUp from './Pages/SignUp';
 import Profile from './Pages/Profile'; 
+import AddRequests from './Pages/AddRequests'; 
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
               <UnauthenticatedRoute path="/signup" component={SignUp}></UnauthenticatedRoute>
               <UnauthenticatedRoute path="/signin" component={SignIn}></UnauthenticatedRoute>
               <AuthenticatedRoute path="/profile" component={Profile}></AuthenticatedRoute>
+              <AuthenticatedRoute path="/add-request" component={AddRequests}></AuthenticatedRoute>
             </Switch>
           </AuthProvider>
         </Router>

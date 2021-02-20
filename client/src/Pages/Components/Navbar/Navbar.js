@@ -33,8 +33,10 @@ const navbar = (props) => {
         tl.staggerTo('.welcome-back span', 0.8, {top: "0px"}, 0.1)
           .staggerTo('.welcome-back span', 0.8, {delay: 3, top: "100px"}, 0.1)
         setTimeout(() => {
-            document.querySelector('.welcome-back').innerHTML = `<span>${getCompany.name}<span>`;
-            tl.staggerTo('.welcome-back span', 0.8, {top: "0px"}, 0.1)
+            if(document.querySelector('.welcome-back')){
+                document.querySelector('.welcome-back').innerHTML = `<span>${getCompany.name}<span>`;
+                tl.staggerTo('.welcome-back span', 0.8, {top: "0px"}, 0.1)
+            }
         }, 5100);
     }, []); 
 
@@ -51,7 +53,7 @@ const navbar = (props) => {
             <div className="component-navbar-settings">
                 <div className="logout-btn" onClick={handleLogout}><FontAwesomeIcon icon="sign-out-alt" /></div>
                 <div className="settings-btn"><FontAwesomeIcon icon="cogs" /></div>
-                <div className="add-request-btn"><FontAwesomeIcon icon="plus" /></div>
+                <div className="add-request-btn"> <Link to="/add-request"><FontAwesomeIcon icon="plus" /></Link> </div>
             </div>
         </div>
     ); 
