@@ -9,7 +9,7 @@ const getAllCompanies = async (req, res, next) => {
         let allCompaniesFromFirebase = await firestore.collection('companies').get(); 
         let companies = []; 
         allCompaniesFromFirebase.forEach(company => {
-            companies.push(company.data()); 
+            companies.push({company: company.data(), id: company.id}); 
         }); 
         res.send(companies);
     } catch (error) {

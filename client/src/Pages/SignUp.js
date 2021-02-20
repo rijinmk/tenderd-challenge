@@ -8,6 +8,8 @@ import ErrorBox from './Components/ErrorBox/ErrorBox';
 
 const signUp = () => {
 
+    const baseAPI_URL = "http://localhost:5000"; // Added this cause proxy on package.json is not working
+    const nameRef = useRef(); 
     const emailRef = useRef(); 
     const passwordRef = useRef(); 
     const passwordConfirmRef = useRef(); 
@@ -22,10 +24,33 @@ const signUp = () => {
         try{
             setError('');
             console.log(passwordRef.current.value, passwordConfirmRef.current.value); 
+            if(!(nameRef.current.value.length > 3)){
+                return setError("Please Enter your name"); 
+            }
             if(passwordRef.current.value !== passwordConfirmRef.current.value){
                 return setError("Passwords don't match"); 
             }
-            await signup(emailRef.current.value, passwordRef.current.value); 
+
+            let dataToSendToFirebase = {
+                name: nameRef.current.value, 
+                email: emailRef.current.value, 
+                company: ""
+            }
+
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dataToSendToFirebase)
+            };
+
+            await signup(emailRef.current.value, passwordRef.current.value);
+
+            fetch(`${baseAPI_URL}/api/user/add`, requestOptions)
+                .then(response => response.json())
+                .then(data => this.setState({ postId: data.id }));
+
+            console.log(dataToSendToFirebase, requestOptions); 
+
             history.push("/profile");
         } catch(error) {
             setError(error.message); 
@@ -41,14 +66,16 @@ const signUp = () => {
             <h2>Sign Up</h2>
             <hr/>
             {error ? <ErrorBox message={error} /> : ''}
-            <form onSubmit={handleSubmit} className="form-container">
+            <form className="form-container">
+                <label> <span>Name</span> </label>
+                <input type="text" ref={nameRef}/>
                 <label> <span>Email</span> </label>
                 <input type="email" ref={emailRef}/>
                 <label> <span>Password</span> </label>
                 <input type="password" ref={passwordRef}/>
                 <label> <span>Confirm Password</span>  </label>
                 <input type="password" ref={passwordConfirmRef}/>
-                <input type="submit" value="Sign Up"/>
+                <input onClick={handleSubmit} type="submit" value="Sign Up"/>
             </form>
             
             <div className="form-link">
