@@ -1,0 +1,33 @@
+.component-request-table{
+    > table{
+        
+        width:100%;
+
+        .Completed{
+            font-weight:bold;
+            color:#262B8C;
+        }
+
+        .Cancelled{
+            font-weight:bold;
+            color:#e74c3c;
+        }
+
+        thead{
+            background:#242B40;
+            color:#fff;
+            text-align: center;
+        }
+
+        th{
+            padding:10px;
+        }
+
+        td{
+            border-bottom:1px solid #eee;
+            text-align: center;
+            font-size:13px;
+            padding:10px;
+        }
+    }
+}

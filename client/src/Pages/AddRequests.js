@@ -26,7 +26,7 @@ const addRequests = () => {
         console.log(type, status, assignedTo, company, description, assignedBy); 
         if(type && status && assignedTo && company && description && assignedBy){
             console.log("Sending request"); 
-            await fetch(`${baseAPI_URL}/api/request/add?type=${type.value}&status=${status.value}&assignedTo=${assignedTo.value}&company=${company.value}&description=${description.value}&assignedBy=${assignedBy.value}`)
+            await fetch(`${baseAPI_URL}/api/request/add?type=${type.value}&status=${status.value}&assignedTo=${assignedTo.value}&company=${company.value}&description=${description.value}&assignedBy=${assignedBy}`)
             alert("Request send"); 
             setTimeout(() => {
                 history.push("/profile"); 

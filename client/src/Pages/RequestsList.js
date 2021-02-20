@@ -3,6 +3,7 @@ import { useAuth } from '../firebase/AuthContext';
 
 // User defined Components
 import Navbar from './Components/Navbar/Navbar'; 
+import RequestTable from './Components/RequestsTable/RequestTable';
 
 const requestList = () => {
 
@@ -27,6 +28,12 @@ const requestList = () => {
     return(
         <div className="partial-page-req-list">
             {userData && <Navbar email={userData.email} company={userData.company} name={userData.name}></Navbar>}
+        
+            <div className="my-4">
+                <hr/>
+                {userData && <RequestTable company={userData.company}></RequestTable>}
+            </div>
+
         </div>
     );
 }

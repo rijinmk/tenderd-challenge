@@ -19,6 +19,19 @@ const addOneRequest = async (req, res, next) => {
     }
 }
 
+// Get requests of a specific company
+const requestsOfCompany = async (req, res, next) => {
+    try{
+        let data = req.params.company; 
+        let companyData = await firestore.collection('companies').doc(data).get(); 
+        res.send({company: companyData.data().requests, id: companyData.data().id}); 
+    } catch (error) {
+        console.log(error); 
+        res.status(400).json(error); 
+    }
+}
+
 module.exports = {
-    addOneRequest
+    addOneRequest, 
+    requestsOfCompany
 }
