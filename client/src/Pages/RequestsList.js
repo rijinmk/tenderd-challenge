@@ -25,9 +25,8 @@ const requestList = () => {
     }, []); 
 
     return(
-        <div>
-            <Navbar></Navbar>
-            <pre>{JSON.stringify(userData)}</pre>
+        <div className="partial-page-req-list">
+            {userData && <Navbar email={userData.email} company={userData.company} name={userData.name}></Navbar>}
         </div>
     );
 }

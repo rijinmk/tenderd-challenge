@@ -17,6 +17,24 @@ const getAllCompanies = async (req, res, next) => {
     }
 }
 
+// Get a company by ID
+const getOneCompany = async (req, res, next) => {
+    try{
+        let id = req.params.id; 
+        let allCompaniesFromFirebase = await firestore.collection('companies').get(); 
+        let selectedCompany; 
+        allCompaniesFromFirebase.forEach(company => {
+            if(company.id === id){
+                selectedCompany = company.data(); 
+            } 
+        }); 
+        res.send(selectedCompany);
+    } catch(error) {
+        res.status(400).json(error); 
+    }
+}
+
 module.exports = {
-    getAllCompanies
+    getAllCompanies, 
+    getOneCompany
 }

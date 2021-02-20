@@ -57,8 +57,8 @@ const profile = () => {
             }
 
             {/* <h2>Profile</h2> */}
-            <a href="#" onClick={handleLogout}>Logout</a>
-            <h5>{currentUser && currentUser.email}</h5>
+            {/* <a href="#" onClick={handleLogout}>Logout</a> */}
+            {/* <h5>{currentUser && currentUser.email}</h5> */}
             {/* <Link to="/signup">Sign Up</Link> */}
         </div>
     );
