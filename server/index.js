@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 // Routes for the APIs
 const companyRoutes = require("./routes/companies"); 
 const userRoutes = require("./routes/users"); 
+const reqRoutes = require("./routes/requests"); 
 
 // Setting up Express
 const app = express();
@@ -14,6 +15,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/api/company', companyRoutes.routes); 
 app.use('/api/user', userRoutes.routes); 
+app.use('/api/request', reqRoutes.routes); 
 
 const PORT = 5000; 
 app.listen(PORT, function(){
