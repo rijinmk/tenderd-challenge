@@ -20,6 +20,30 @@ If the server doesn't run, click on this link: [localhost](http://localhost:3000
 
 Also watch this video if things are not working properly or if the UX is confusing: [Video](https://github.com/rijinmk/tenderd-challenge/blob/main/Tendered%20Demo.mp4?raw=true)
 
+## Gulp Tasks
+
+- `css-css-libraries`
+  - This takes all the CSS files from the public folder
+  - Then minifies, concats, creates `libraries.styles.min.css` and places it in `/src` folder
+
+- `scss-css-components`
+  - This takes all the SCSS files that styles the React Components
+  - Then it converts it all into CSS
+  - It's concatinates after the library CSS (bootstrap,...which ever libraries), so that the libraries are given priority to run first
+  - Then minifies, concats, creates `component.styles.min.css` and places it in the react `/src` folder
+
+- `combine-css`
+  - This combines the files created above
+  - Into one big bundle of CSS, `bundle.min.css`
+  - Then deletes the `libraries.styles.min.css` and `component.styles.min.css`
+  - Then places `bundle.min.css` in the react `/src` folder
+
+- `clean-bundle`
+  - This task deletes the old `bundle.min.css` for the incoming new `bundle.min.css`
+
+- `watch`
+  - This task watches all the above tasks whenever a change is made in any of the SCSS files
+
 ## API
 
 ### Users API
