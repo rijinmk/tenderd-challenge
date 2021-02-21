@@ -49,3 +49,30 @@ They are prefixed with `/api/users/`
 - 🟨 `POST` /api/users/**setCompany**
   - After the users selects a company
   - `{user: currentUser.email, companyID: selectedID}`
+
+### Companies API
+
+- 🟩 `GET` /api/company/**all**
+  - Get all the company information
+
+- 🟩 `GET` /api/company/select/**:companyID**
+  - Looks something like this: `/api/company/select/34h39i93j9dj...`
+  - Get a specific company information
+
+### Requests API
+
+- 🟩 `GET` /api/request/**add**
+  - Add a requests
+  - The information is sent through query variables
+
+- 🟩 `GET` /api/request/company/**:companyID**
+  - Looks something like this: `/api/request/company/34h39i93j9dj...`
+  - Get a specific company requests information
+
+- 🟩 `GET` /api/request/**edit**
+  - Add a request
+  - The information is sent through query variables
+
+- 🟩 `GET` /api/request/**:requestID**
+  - Looks something like this: `/api/request/34h39i93j9dj...`
+  - Get a specific request information
