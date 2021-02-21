@@ -22,7 +22,6 @@ const navbar = (props) => {
     }
 
     useEffect(async () => {
-
         console.log({props}); 
         console.log(`${baseAPI_URL}/api/company/select/${props.company}`); 
         let getCompany = await fetch(`${baseAPI_URL}/api/company/select/${props.company}`); 

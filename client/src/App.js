@@ -15,6 +15,7 @@ import SignIn from './Pages/SignIn';
 import SignUp from './Pages/SignUp';
 import Profile from './Pages/Profile'; 
 import AddRequests from './Pages/AddRequests'; 
+import EditRequests from './Pages/EditRequests'; 
 
 class App extends Component {
   render() {
@@ -27,6 +28,7 @@ class App extends Component {
               <UnauthenticatedRoute path="/signin" component={SignIn}></UnauthenticatedRoute>
               <AuthenticatedRoute exact path="/" component={Profile}></AuthenticatedRoute>
               <AuthenticatedRoute path="/add-request" component={AddRequests}></AuthenticatedRoute>
+              <AuthenticatedRoute path="/edit-request" component={EditRequests}></AuthenticatedRoute>
             </Switch>
           </AuthProvider>
         </Router>

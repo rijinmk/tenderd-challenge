@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '@fortawesome/fontawesome-free-solid'
+import { Link, useHistory } from 'react-router-dom'; 
 
 const moment = require("moment"); 
 
@@ -9,28 +10,31 @@ const requestTable = (props) => {
     const baseAPI_URL = "http://localhost:5000"; // Added this cause proxy on package.json is not working
     const [companyRequests, setCompanyRequests] = useState(); 
 
+    function assignSetCompanyRequests(arr){
+        setCompanyRequests(arr);
+    }
+
     useEffect(async () => {
-        let companyRequests = await fetch(`${baseAPI_URL}/api/request/company/${props.company}`); 
-        companyRequests = await companyRequests.json(); 
-        
+        let companyRequestsIDs = await fetch(`${baseAPI_URL}/api/request/company/${props.company}`); 
+        companyRequestsIDs = await companyRequestsIDs.json(); 
         let companyRequestsTableRows = []; 
-        console.log("REQQQU", companyRequests)
-        companyRequests.company.forEach(data => {
-            console.log("--->", data); 
+        companyRequestsIDs.company.forEach(async (e, i) => {
+            let req = await fetch(`${baseAPI_URL}/api/request/${e}`);
+            let data = await req.json();  
             companyRequestsTableRows.push((
                 <tr className={data.status} data-request-id key={Math.floor(Math.random() * 999999999)}>
                     <td>{data.type}</td>
                     <td>{data.assignedBy}</td>
-                    <td>{data.status}</td>
                     <td>{moment(data.history[data.history.length-1].time).fromNow()}</td>
-                    <td>{data.status}</td>
-                    <td><FontAwesomeIcon icon="history" /></td>
-                    <td><FontAwesomeIcon icon="pencil-alt" /></td>
+                    <td>{data.history[data.history.length-1].status}</td>
+                    <td> <FontAwesomeIcon icon="history" /></td>
+                    <td><Link to={`/edit-request?${data.requestID}`}><FontAwesomeIcon icon="pencil-alt" /></Link></td>
                 </tr>
             ));
-        }); 
-        
-        setCompanyRequests(companyRequestsTableRows); 
+            if(i===companyRequestsIDs.company.length-1){
+                assignSetCompanyRequests(companyRequestsTableRows); 
+            }
+        });  
     }, []); 
 
     return(
@@ -40,7 +44,6 @@ const requestTable = (props) => {
                     <tr>
                         <th>Type</th>
                         <th>Assigned By</th>
-                        <th>Status</th>
                         <th>Last Updated</th>
                         <th>Status</th>
                         <th>History</th>

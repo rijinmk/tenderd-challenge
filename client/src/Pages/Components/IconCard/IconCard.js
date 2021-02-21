@@ -22,7 +22,7 @@ const addRequests = (props) => {
     return (
         <div>
             <div data-companyid={props.companyid} className={`component-icon-card component-icon-card--${props.type} container-for-${props.groupName}`}>
-            <input value={props.radioval} onChange={handleTypeSelection} type="radio" name={props.groupName} className="component-icon-card__invicible-checkbox"/>
+                <input value={props.radioval} onChange={handleTypeSelection} type="radio" name={props.groupName} className="component-icon-card__invicible-checkbox"/>
                 <div className="icon-holder"><FontAwesomeIcon icon={props.icon} /></div>
                 <div className="title-holder"> <span>{props.title}</span> </div>
             </div>
