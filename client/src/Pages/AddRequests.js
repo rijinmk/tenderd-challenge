@@ -120,6 +120,7 @@ const addRequests = () => {
             <hr/>
 
             <div className="form-section btn-container">
+                <Link className="mx-3" to="/">Go Back</Link>
                 <input onClick={sendData} type="button" value="Submit"/>
             </div>
 

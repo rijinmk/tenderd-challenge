@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../firebase/AuthContext';
 import IconCard from './Components/IconCard/IconCard'; 
+import Timeline from './Components/Timeline/Timeline'; 
 import { Link, useHistory } from 'react-router-dom'; 
 
 const editRequest = () => {
@@ -8,6 +9,7 @@ const editRequest = () => {
     const baseAPI_URL = "http://localhost:5000"; // Added this cause proxy on package.json is not working
     const requestID = window.location.search.replace('?',''); 
     const [request, setRequest] = useState(); 
+    const [heightOfApp, setHeightOfApp] = useState();
     const history = useHistory(); 
 
     const editRequest = async (e) => {
@@ -66,12 +68,15 @@ const editRequest = () => {
             } 
         }); 
 
+        let setTopValue = document.querySelector('.App.container').offsetHeight / 4 + "px"; 
+        setHeightOfApp({padding: "100px 0px", position: "relative", top: setTopValue}); 
+
     }, []); 
 
     return (
-        <div>
+        <div style={heightOfApp}>
             <h1>Edit Request</h1>
-
+            {request && console.log("This is from JSX", request.history)}
             <h4 className="mt-5 mb-3">Type of Request</h4>
             <div className="form-section icon-container type-of-requests">
                 <IconCard groupName="type-of-request" radioval="Breakdown" title="Breakdown" type="big" icon="unlink"></IconCard>
@@ -95,13 +100,15 @@ const editRequest = () => {
 
             <h4 className="mt-5 mb-3">{request ? "History" : ""}</h4>
             <div className="form-section req-info-container mb-5">
-                {/* <div>Assigned by: <span>{request && request.assignedBy}</span> </div>
-                <div>Assigned to: <span>{request && request.assignedTo}</span> </div> */}
+                <div>Assigned by: <span>{request && request.assignedBy}</span> </div>
+                <div>Assigned to: <span>{request && request.assignedTo}</span> </div> <br/>
+                {request && <Timeline historydata={JSON.stringify(request.history)}></Timeline>}
             </div>
 
             <hr/>
 
             <div className="form-section btn-container">
+                <Link className="mx-3" to="/">Go Back</Link>
                 <input onClick={editRequest} type="button" value="Submit"/>
             </div>
 

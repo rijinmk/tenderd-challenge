@@ -1,0 +1,51 @@
+
+.timeline {
+    width: 300px;
+}
+  
+.timeline p {
+    border-top: 2px dashed;
+    border-color: #ccc !important;
+    margin:0; padding: 30px;
+
+    > span{
+        display:block;
+    }
+
+    > .moments{
+        opacity: 0.5;
+        font-size: 12px;
+    }
+
+    > .status{
+        font-weight: 900;
+        font-size: 25px;
+    }
+}
+  
+.timeline p:nth-child(odd) {
+    border-left: 2px dashed;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    margin-right: 30px; 
+    padding-right: 0;
+}
+  
+.timeline p:nth-child(even) {
+    border-right: 2px dashed;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    margin-left: 30px; 
+    padding-left: 0;
+}
+  
+.timeline p:first-child {
+    border-top: 0;
+    border-top-right-radius:0;
+    border-top-left-radius:0;
+}
+  
+.timeline p:last-child {
+    border-bottom-right-radius:0;
+    border-bottom-left-radius:0;
+}
