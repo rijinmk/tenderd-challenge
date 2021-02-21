@@ -44,6 +44,12 @@ Also watch this video if things are not working properly or if the UX is confusi
 - `watch`
   - This task watches all the above tasks whenever a change is made in any of the SCSS files
 
+## React File Structure
+
+The pages folder uses the components in the components folder to build its app, I used this structure to add a layer of abstraction while making each component and not be bothered by other component / pages code. 
+
+![](https://raw.githubusercontent.com/rijinmk/tenderd-challenge/main/file-structure.jpg?token=AF2ZRH3TSIPG7P74DZD3RCTAGLMP2)
+
 ## API
 
 ### Users API
