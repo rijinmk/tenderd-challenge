@@ -146,6 +146,8 @@ They are prefixed with `/api/request/`
 
 ![](https://raw.githubusercontent.com/rijinmk/image-store/main/request.jpg)
 
+---
+
 ### Users
 
 - id (NodeJS - email-id)
