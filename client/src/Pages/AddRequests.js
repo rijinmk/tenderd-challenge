@@ -29,7 +29,7 @@ const addRequests = () => {
             await fetch(`${baseAPI_URL}/api/request/add?type=${type.value}&status=${status.value}&assignedTo=${assignedTo.value}&company=${company.value}&description=${description.value}&assignedBy=${assignedBy}`)
             alert("Request send"); 
             setTimeout(() => {
-                history.push("/profile"); 
+                history.push("/"); 
             }, 500); 
         }else{
             e.target.style.opacity = 1; 

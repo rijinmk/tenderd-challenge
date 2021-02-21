@@ -51,7 +51,7 @@ const signUp = () => {
 
             console.log(dataToSendToFirebase, requestOptions); 
 
-            history.push("/profile");
+            history.push("/");
         } catch(error) {
             setError(error.message); 
         }

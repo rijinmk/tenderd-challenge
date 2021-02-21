@@ -25,7 +25,7 @@ class App extends Component {
             <Switch>
               <UnauthenticatedRoute path="/signup" component={SignUp}></UnauthenticatedRoute>
               <UnauthenticatedRoute path="/signin" component={SignIn}></UnauthenticatedRoute>
-              <AuthenticatedRoute path="/profile" component={Profile}></AuthenticatedRoute>
+              <AuthenticatedRoute exact path="/" component={Profile}></AuthenticatedRoute>
               <AuthenticatedRoute path="/add-request" component={AddRequests}></AuthenticatedRoute>
             </Switch>
           </AuthProvider>

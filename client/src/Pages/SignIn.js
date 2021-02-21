@@ -21,7 +21,7 @@ const signIn = () => {
         try{
             setError('');
             await signin(emailRef.current.value, passwordRef.current.value); 
-            history.push("/profile");
+            history.push("/");
         } catch(error) {
             setError(error.message); 
         }
