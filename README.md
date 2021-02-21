@@ -20,3 +20,32 @@ If the server doesn't run, click on this link: [localhost](http://localhost:3000
 
 Also watch this video if things are not working properly or if the UX is confusing: [Video](https://github.com/rijinmk/tenderd-challenge/blob/main/Tendered%20Demo.mp4?raw=true)
 
+## API
+
+### Users API
+
+The routes for the API can be found in: `server\routes\users.js`
+
+The functionality of the API can be found in: `server\controller\users.js`
+
+They are prefixed with `/api/users/`
+
+- 🟩 `GET` /api/user/**all**
+  - Get all the users information
+
+- 🟩 `GET` /api/user/user/**:email**
+  - Looks something like this: `/api/user/user/john@gmail.com`
+  - Get a specific user information
+
+- 🟨 `POST` /api/user/**add**
+  - When the user logs-in their information is added to the users collection in the firestore
+  - `{"name": "name", "email": "email","company": "company"}`
+     
+- 🟨 `POST` /api/users/**hasCompany**
+  - When the user logs-in initially, they have to select a company
+  - This API checks is the user has assigned any company to themself
+  - `{"email": "users email id"}`
+
+- 🟨 `POST` /api/users/**setCompany**
+  - After the users selects a company
+  - `{user: currentUser.email, companyID: selectedID}`
