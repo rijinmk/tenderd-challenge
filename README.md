@@ -52,6 +52,12 @@ They are prefixed with `/api/users/`
 
 ### Companies API
 
+The routes for the API can be found in: `server\routes\company.js`
+
+The functionality of the API can be found in: `server\controller\company.js`
+
+They are prefixed with `/api/company/`
+
 - 🟩 `GET` /api/company/**all**
   - Get all the company information
 
@@ -60,6 +66,12 @@ They are prefixed with `/api/users/`
   - Get a specific company information
 
 ### Requests API
+
+The routes for the API can be found in: `server\routes\request.js`
+
+The functionality of the API can be found in: `server\controller\request.js`
+
+They are prefixed with `/api/request/`
 
 - 🟩 `GET` /api/request/**add**
   - Add a requests
