@@ -17,5 +17,5 @@ cd client && npm i && npm start
 ```
 
 If the server doesn't run, click on this link: [localhost](http://localhost:3000/signin)
-
+Also watch this video if things are not working properly or if the UX is confusing: [Video](https://github.com/rijinmk/tenderd-challenge/blob/main/Tendered%20Demo.mp4?raw=true)
 
