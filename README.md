@@ -48,7 +48,7 @@ Also watch this video if things are not working properly or if the UX is confusi
 
 The pages folder uses the components in the components folder to build its app, I used this structure to add a layer of abstraction while making each component and not be bothered by other component / pages code. 
 
-![](https://raw.githubusercontent.com/rijinmk/tenderd-challenge/main/file-structure.jpg?token=AF2ZRH3TSIPG7P74DZD3RCTAGLMP2)
+![](https://raw.githubusercontent.com/rijinmk/image-store/main/file-structure.jpg)
 
 ## API
 
@@ -118,3 +118,44 @@ They are prefixed with `/api/request/`
 - 🟩 `GET` /api/request/**:requestID**
   - Looks something like this: `/api/request/34h39i93j9dj...`
   - Get a specific request information
+  
+  
+## DB Schema
+  
+### Companies
+
+- id (auto-id by firebase)
+  - image (string)
+  - name (string)
+  - requests (array of references)  
+
+![](https://raw.githubusercontent.com/rijinmk/image-store/main/company-firestore.jpg)
+
+---
+
+### Requests
+
+- id (NodeJS uuid)
+  - assignedBy (string)
+  - assignedTo (string)
+  - description (string)  
+  - status (string)
+  - type (string)
+  - requestID (string - reference)
+  - history (array)
+
+![](https://raw.githubusercontent.com/rijinmk/image-store/main/request.jpg)
+
+### Users
+
+- id (NodeJS - email-id)
+  - company (string reference)
+  - email (string)
+  - name (string)  
+  - requestsThatAreAssignedToYou (array or maps)
+  - requestsThatYouAssigned (array of maps)
+
+![](https://raw.githubusercontent.com/rijinmk/image-store/main/users.jpg)
+  
+  
+  
