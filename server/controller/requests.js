@@ -1,6 +1,7 @@
 const firebase = require("../firebase-db"); 
 const express = require("express");
-const { v4: uuidv4 } = require('uuid');
+// const { v4: uuidv4 } = require('uuid');
+const uuidv4 = require('uuid').v4; 
 
 const firestore = firebase.firestore(); 
 
