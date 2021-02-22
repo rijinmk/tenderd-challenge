@@ -4,6 +4,8 @@
 
 After cloning the project run this command on the cloned folder: 
 
+**Note: I have send the `.env` files through mail, please paste them in the `/server` folder `/client` respectively.**
+
 ```
 cd server && npm i && nodemon index.js
 ```
@@ -17,6 +19,8 @@ cd client && npm i && npm start
 ```
 
 If the server doesn't run, click on this link: [localhost](http://localhost:3000/signin)
+
+Installation process [Video](https://github.com/rijinmk/tenderd-challenge/raw/main/Tendered%20Demo.mp4)
 
 Also watch this video if things are not working properly or if the UX is confusing: [Video](https://github.com/rijinmk/tenderd-challenge/blob/main/Tendered%20Demo.mp4?raw=true)
 
