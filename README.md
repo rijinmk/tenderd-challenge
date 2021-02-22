@@ -1,4 +1,4 @@
-# Tendered Full-Stack Web App Challenge
+# Tenderd Full-Stack Web App Challenge
 
 ## Running the App
 
